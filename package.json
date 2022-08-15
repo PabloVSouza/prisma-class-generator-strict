@@ -17,7 +17,8 @@
 	},
 	"scripts": {
 		"format": "prettier --write \"src/**/*.ts\"",
-		"dev": "node -r ts-node/register src/index.ts"
+		"dev": "node -r ts-node/register src/index.ts",
+		"build": "npx tsc"
 	},
 	"bin": {
 		"prisma-class-generator-strict": "dist/bin.js"
