@@ -1,4 +1,6 @@
-# Prisma Class Generator
+
+# Prisma Class Generator Strict
+ This is a fork from [Prisma Class Generator](https://github.com/kimjbstar/prisma-class-generator) adding ! on field names for strict mode compatibility.
 
 ## **Prisma**
 
