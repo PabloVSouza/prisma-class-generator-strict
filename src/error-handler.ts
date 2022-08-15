@@ -16,7 +16,7 @@ export const handleGenerateError = (e: Error) => {
 		log('Usage Example')
 		log(`
 generator prismaClassGenerator {
-	provider	= "prisma-class-generator"
+	provider	= "prisma-class-generator-strict"
 	output		= (string)
 	dryRun   	= (boolean)
 	useSwagger	= (boolean)

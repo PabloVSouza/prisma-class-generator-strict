@@ -63,7 +63,10 @@ export class PrismaConvertor {
 		dmmfField: DMMF.Field,
 	): PrismaDecorator => {
 		const options: Record<string, any> = {}
-		const name = dmmfField.isRequired === true ? 'ApiProperty' : 'ApiPropertyOptional'
+		const name =
+			dmmfField.isRequired === true
+				? 'ApiProperty'
+				: 'ApiPropertyOptional'
 		const decorator = new PrismaDecorator({
 			name,
 			importFrom: '@nestjs/swagger',
@@ -106,35 +109,45 @@ export class PrismaConvertor {
 			name: model.name + 'Relations',
 		})
 
-		const rFields = model.fields.filter((field) => field.relationName)
+		const rFields = model.fields
+			.filter((field) => field.relationName)
 			.map((field) => {
 				const converted = this.convertField(field)
 				if (useSwagger) {
-					const decorator = this.extractSwaggerDecoratorFromField(field)
+					const decorator =
+						this.extractSwaggerDecoratorFromField(field)
 					converted.decorators.push(decorator)
 				}
 				// console.dir(converted, { depth: null })
 				return converted
 			})
 
-		const fields = model.fields.filter((field) => !seperateRelationFields || !field.relationName)
+		const fields = model.fields
+			.filter((field) => !seperateRelationFields || !field.relationName)
 			.map((field) => {
 				const converted = this.convertField(field)
 				if (useSwagger) {
-					const decorator = this.extractSwaggerDecoratorFromField(field)
+					const decorator =
+						this.extractSwaggerDecoratorFromField(field)
 					converted.decorators.push(decorator)
 				}
 				// console.dir(converted, { depth: null })
 				return converted
 			})
-		
+
 		const relationTypes = model.fields
-			.filter((field) => field.relationName && (seperateRelationFields || model.name !== field.type))
+			.filter(
+				(field) =>
+					field.relationName &&
+					(seperateRelationFields || model.name !== field.type),
+			)
 			.map((v) => v.type)
 		const enums = model.fields.filter((field) => field.kind === 'enum')
 
 		pClass.fields = fields
-		pClass.relationTypes = seperateRelationFields ? [] : uniquify(relationTypes)
+		pClass.relationTypes = seperateRelationFields
+			? []
+			: uniquify(relationTypes)
 		pClass.enumTypes = enums.map((field) => field.type.toString())
 
 		rClass.fields = rFields
