@@ -63,10 +63,9 @@ export class PrismaConvertor {
 		dmmfField: DMMF.Field,
 	): PrismaDecorator => {
 		const options: Record<string, any> = {}
-		const name =
-			dmmfField.isRequired || !dmmfField.isId
-				? 'ApiProperty'
-				: 'ApiPropertyOptional'
+		const name = dmmfField.isRequired
+			? 'ApiProperty'
+			: 'ApiPropertyOptional'
 		const decorator = new PrismaDecorator({
 			name,
 			importFrom: '@nestjs/swagger',
@@ -169,7 +168,7 @@ export class PrismaConvertor {
 		})
 		let type = this.getPrimitiveMapTypeFromDMMF(dmmfField)
 
-		if (!(dmmfField.isRequired || dmmfField.isId)) {
+		if (!(dmmfField.isRequired && !dmmfField.isId)) {
 			field.nullable = true
 		}
 
