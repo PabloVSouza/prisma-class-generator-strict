@@ -1,5 +1,5 @@
 {
-	"name": "prisma-class-generator",
+	"name": "prisma-class-generator-strict",
 	"version": "0.2.0",
 	"description": "Class generator from Prisma schema",
 	"main": "dist/index.js",
@@ -10,7 +10,7 @@
 		"typescript",
 		"generator"
 	],
-	"homepage": "https://github.com/kimjbstar/prisma-class-generator",
+	"homepage": "https://github.com/kimjbstar/prisma-class-generator-strict",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/kimjbstar/prisma-class-generator.git"
