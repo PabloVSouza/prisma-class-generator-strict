@@ -64,7 +64,7 @@ export class PrismaConvertor {
 	): PrismaDecorator => {
 		const options: Record<string, any> = {}
 		const name =
-			dmmfField.isRequired === true
+			dmmfField.isRequired || !dmmfField.isId
 				? 'ApiProperty'
 				: 'ApiPropertyOptional'
 		const decorator = new PrismaDecorator({
@@ -169,7 +169,7 @@ export class PrismaConvertor {
 		})
 		let type = this.getPrimitiveMapTypeFromDMMF(dmmfField)
 
-		if (dmmfField.isRequired === false) {
+		if (!(dmmfField.isRequired || dmmfField.isId)) {
 			field.nullable = true
 		}
 
