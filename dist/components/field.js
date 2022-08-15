@@ -9,7 +9,7 @@ class PrismaField extends decorator_1.Decoratable {
         this.echo = () => {
             var _a;
             let name = this.name;
-            name = this.nullable ? `${name}?` : `${name}`;
+            name = this.nullable ? `${name}?` : `${name}!`;
             const template = this.default ? field_1.FIELD_TEMPLATE_DEFAULT : field_1.FIELD_TEMPLATE;
             return template
                 .replace('#!{NAME}', name)

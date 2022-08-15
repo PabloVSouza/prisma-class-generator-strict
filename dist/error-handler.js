@@ -21,6 +21,7 @@ generator prismaClassGenerator {
 	output		= (string)
 	dryRun   	= (boolean)
 	useSwagger	= (boolean)
+  capitalizeFileName = (boolean)
 	seperateRelationFields = (boolean),
 }`);
         (0, util_1.log)(`Your Input : ${JSON.stringify(e.config)}`);
