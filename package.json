@@ -21,7 +21,7 @@
 		"build": "npx tsc"
 	},
 	"bin": {
-		"prisma-class-generator-strict": "dist/bin.js"
+		"prisma-class-generator-strictmode": "dist/bin.js"
 	},
 	"engines": {
 		"node": ">=14"
