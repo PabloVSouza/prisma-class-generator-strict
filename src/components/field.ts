@@ -10,7 +10,12 @@ export class PrismaField extends Decoratable implements Echoable {
 
 	echo = () => {
 		let name = this.name
-		name = this.nullable ? `${name}?` : `${name}${!this.default && '!'}`
+		const isRelation = this.type.indexOf('[]') > -1
+
+		name =
+			this.nullable || isRelation
+				? `${name}?`
+				: `${name}${!this.default ? '!' : ''}`
 		const template = this.default ? FIELD_TEMPLATE_DEFAULT : FIELD_TEMPLATE
 		return template
 			.replace('#!{NAME}', name)
